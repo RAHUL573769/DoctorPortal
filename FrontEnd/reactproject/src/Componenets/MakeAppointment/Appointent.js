@@ -1,6 +1,7 @@
 import React from "react";
 import doctor from "../../assets/images/doctor.png";
 import doctorbg from "../../assets/images/appointment.png";
+import Button from "../Shared/PrimaryButton/Button";
 
 const Appointent = () => {
   return (
@@ -18,7 +19,7 @@ const Appointent = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <button className="btn btn-primary">Get Started</button>
+           <Button>Get Started</Button>
           </div>
         </div>
       </div>

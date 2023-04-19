@@ -1,4 +1,5 @@
 import Main from "../../layouts/Main";
+import Appointment from "../AppointmentRouter/Appointment";
 import Home from "../Home/Home";
 
 const { createBrowserRouter, RouterProvider } = require("react-router-dom");
@@ -12,10 +13,15 @@ export const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>
       },
+    
       {
         path: "/home",
         element: <Home></Home>
-      }
+      },
+      {
+        path: "/appointment",
+        element: <Appointment></Appointment>
+      },
     ]
   }
 ]);
