@@ -27,7 +27,11 @@ const AvailableAppointments = (props) => {
     appointmentOptions.map(option=><AppointOption key={option._id} setTreatment={setTreatment} option={option}></AppointOption>)
 }
 
-<BookingModal treatment={treatment} ></BookingModal>
+
+{
+    treatment&&<BookingModal treatment={treatment} ></BookingModal>
+}
+
 
       </div>
     </div>
