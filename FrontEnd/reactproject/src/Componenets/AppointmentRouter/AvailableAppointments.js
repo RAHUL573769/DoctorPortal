@@ -29,7 +29,7 @@ const AvailableAppointments = (props) => {
 
 
 {
-    treatment&&<BookingModal treatment={treatment} ></BookingModal>
+    treatment&&<BookingModal props={props} treatment={treatment} ></BookingModal>
 }
 
 

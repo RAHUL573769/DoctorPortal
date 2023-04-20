@@ -1,7 +1,12 @@
+import { format } from 'date-fns';
 import React from 'react';
 
 const BookingModal = (props) => {
-    console.log(props);
+    console.log(props.treatment);
+    const{slots}=props.treatment;
+    console.log(slots)
+const date=format(props.props.selected,'PP');
+   
     return (
         <div>
         
@@ -13,7 +18,15 @@ const BookingModal = (props) => {
     <label htmlFor="my-modal-3" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
     <h3 className="text-lg font-bold">{props.treatment.name}</h3>
   <form className='grid gap-3 grid-cols-1' >
-  <input type="text" placeholder="Type here" className="input w-full " />
+  <input disabled type="text" placeholder="Type here" value={date} className="input w-full " />
+ 
+  <select className="select w-full max-w-xs">
+  {
+slots.map((slot)=>  <option value={slot} className="select w-full max-w-xs" >{slot}</option>
+)
+  }
+  
+</select>
   <input type="text" placeholder="Type here" className="input w-full" />
   <input type="text" placeholder="Type here" className="input w-full" />
   <input type="text" placeholder="Type here" className="input w-full" />
