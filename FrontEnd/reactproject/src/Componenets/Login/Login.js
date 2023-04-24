@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const Login = () => {
   const {
@@ -8,8 +10,20 @@ const Login = () => {
     formState: { errors },
     handleSubmit
   } = useForm();
+
+  const [loginError,setLoginError]=useState("");
+  const { userLogin } = useContext(AuthContext);
   const handleLogin = (data) => {
-    console.log(data);
+   
+    userLogin(data.email,data.password).then((userCredential) => {
+      // Signed in
+      const user = userCredential.user;
+      console.log(user.email);
+      // ...
+    })
+    .catch((error) => {
+  setLoginError(error.message);
+    });;
   };
 
   return (
@@ -50,8 +64,9 @@ const Login = () => {
               <p className="text-error">{errors.password?.message}</p>
             )} */}
 
-
-                  {errors.password && <span role="alert">{errors.password.message}</span>}
+            {errors.password && (
+              <span role="alert">{errors.password.message}</span>
+            )}
 
             <label className="label">
               <span className="label-text">Forget Password?</span>
@@ -60,6 +75,7 @@ const Login = () => {
 
           <input className="btn btn-accent w-full" type="submit" />
         </form>
+        {loginError&&<p className="text-red-800">{loginError}</p>}
         <p>
           New to Doctor's Portal?<Link to="/signup">Creaste an Account?</Link>
         </p>
