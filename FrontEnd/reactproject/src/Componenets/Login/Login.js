@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const Login = () => {
@@ -10,20 +10,25 @@ const Login = () => {
     formState: { errors },
     handleSubmit
   } = useForm();
+  let navigate = useNavigate();
+  let location = useLocation();
 
-  const [loginError,setLoginError]=useState("");
+  let from = location.state?.from?.pathname || "/";
+
+  const [loginError, setLoginError] = useState("");
   const { userLogin } = useContext(AuthContext);
   const handleLogin = (data) => {
-   
-    userLogin(data.email,data.password).then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      console.log(user.email);
-      // ...
-    })
-    .catch((error) => {
-  setLoginError(error.message);
-    });;
+    userLogin(data.email, data.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user.email);
+        navigate(from, { replace: true });
+        // ...
+      })
+      .catch((error) => {
+        setLoginError(error.message);
+      });
   };
 
   return (
@@ -75,7 +80,7 @@ const Login = () => {
 
           <input className="btn btn-accent w-full" type="submit" />
         </form>
-        {loginError&&<p className="text-red-800">{loginError}</p>}
+        {loginError && <p className="text-red-800">{loginError}</p>}
         <p>
           New to Doctor's Portal?<Link to="/signup">Creaste an Account?</Link>
         </p>

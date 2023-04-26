@@ -4,9 +4,8 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 
-
 const SignUp = () => {
-    const{createUser}=useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
   const {
     register,
     formState: { errors },
@@ -16,17 +15,16 @@ const SignUp = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    createUser(data.email,data.password).then((userCredential) => {
-        // Signed in 
+    createUser(data.email, data.password)
+      .then((userCredential) => {
+        // Signed in
         const user = userCredential.user;
-console.log(user);
+        console.log(user);
       })
       .catch((error) => {
-      console.log(error);
+        console.log(error);
         // ..
       });
-    
-    
   };
   return (
     <div className="  h-[800px] flex justify-center items-center">

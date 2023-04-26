@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Header = () => {
-  const { user, signOut } = useContext(AuthContext);
+  const { user, handleSignOut } = useContext(AuthContext);
 
+  const signedOut = () => {
+    handleSignOut();
+  };
   const menuItems = (
     <>
       <li>
@@ -22,10 +25,13 @@ const Header = () => {
       <li>
         <Link to="/reviews">Reviews</Link>
       </li>
+      <li>
+        <Link to="/dashboard">DashBoard</Link>
+      </li>
       {user?.uid ? (
         <div>
           <li>
-            <button>SignOut</button>
+            <button onClick={signedOut}>SignOut</button>
           </li>
         </div>
       ) : (
