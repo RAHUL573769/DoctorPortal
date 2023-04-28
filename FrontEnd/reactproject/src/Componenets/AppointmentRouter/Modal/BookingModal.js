@@ -8,8 +8,9 @@ const BookingModal = (props) => {
   const email = user?.email;
   console.log(user);
   // console.log(props.treatment);
-  const { slots } = props.treatment;
+  const { name: treatmentName, slots } = props.treatment;
   // console.log(slots)
+  console.log(props.treatment);
 
   const handleModalSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +20,7 @@ const BookingModal = (props) => {
     const name = e.target.treatment.value;
 
     const booking = {
-      treatment: name,
+      treatment: treatmentName,
       phone1,
       email,
       appointmentDate: date
