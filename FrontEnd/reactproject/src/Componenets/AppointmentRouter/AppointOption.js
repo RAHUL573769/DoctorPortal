@@ -1,8 +1,7 @@
 import React from "react";
 
-const AppointOption = ({option,setTreatment}) => {
- console.log(option)
-const{id,name,slots}=option;
+const AppointOption = ({ option, setTreatment }) => {
+  const { id, name, slots } = option;
   return (
     <div>
       <div className="card w-96 bg-base-100 shadow-xl">
@@ -14,9 +13,8 @@ const{id,name,slots}=option;
             {slots.length > 1 ? "spaces" : "space"} Available
           </p>
           <div className="card-actions justify-end">
-          
             <label
-              onClick={() =>setTreatment(option)}
+              onClick={() => setTreatment(option)}
               htmlFor="my-modal-3"
               className="btn  btn-primary"
             >

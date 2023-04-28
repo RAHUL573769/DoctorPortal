@@ -13,6 +13,7 @@ const firebaseConfig = {
   // messagingSenderId: process.env.REACT_APP_messagingSenderId,
   // appId: process.env.REACT_APP_appId
   apiKey: "AIzaSyDFAeRZjDk-Ou-Y6lfOShER6We4h54EsdQ",
+  // apiKey: process.env.REACT_APP_apiKey,
   authDomain: "doctors-portal-af6c8.firebaseapp.com",
   projectId: "doctors-portal-af6c8",
   storageBucket: "doctors-portal-af6c8.appspot.com",
