@@ -14,11 +14,13 @@ const AvailableAppointments = (props) => {
 
   const { data: options = [] } = useQuery({
     queryKey: ["options", newDate],
-    queryFn: () =>
-      fetch(`http://localhost:5000/options?date=${newDate}`).then((res) =>
-        res.json()
-      )
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/options");
+      const data = await res.json();
+      return data;
+    }
   });
+
   // useEffect(() => {
   //   fetch(`http://localhost:5000/options?date=${newDate}`)
   //     .then((res) => res.json())
